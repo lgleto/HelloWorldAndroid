@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
+
+        dataToTranslate = "Hello " + getIntent().getStringExtra("name");
+
         textViewTranslation=(TextView)findViewById(R.id.textViewTranslation);
         textViewTranslation.setText(dataToTranslate);
 
