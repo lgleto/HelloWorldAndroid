@@ -9,48 +9,43 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonTranslate;
+    Button buttonEnglish;
+    Button buttonPortuguese;
     TextView textViewTranslation;
-    LinearLayout linearLayout;
 
-    String dataToTranslate = "Hello World"; // model
+    String dataToTranslate = ""; // model
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        linearLayout=new LinearLayout(this);
-        buttonHello=new Button(this);
-        textView = new TextView(this);
 
-        buttonHello.setText("Hello");
-
-
-        linearLayout.addView(buttonHello);
-        linearLayout.addView(textView);
-
-        buttonHello.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("Hello World!");
-            }
-        });
-
-        setContentView(linearLayout);
-        */
         setContentView(R.layout.activity_main);
 
         textViewTranslation=(TextView)findViewById(R.id.textViewTranslation);
         textViewTranslation.setText(dataToTranslate);
 
-        buttonTranslate = (Button)findViewById(R.id.buttonTranslate);
-        buttonTranslate.setOnClickListener(this);
-        
+        buttonEnglish = (Button)findViewById(R.id.buttonEnglish);
+        buttonEnglish.setOnClickListener(this);
+        buttonPortuguese = (Button)findViewById(R.id.buttonPortuguese);
+        buttonPortuguese.setOnClickListener(this);
+
+        updateView();
+    }
+
+    void updateView(){
+        textViewTranslation.setText(dataToTranslate);
     }
 
     @Override
     public void onClick(View view) {
-        dataToTranslate="Olá Mundo!";
-        textViewTranslation.setText(dataToTranslate);
+        switch(view.getId()) {
+            case R.id.buttonPortuguese:
+                dataToTranslate = "Olá Mundo!";
+                break;
+            case R.id.buttonEnglish:
+                dataToTranslate = "Hello World!";
+                break;
+        }
+        updateView();
     }
 }
