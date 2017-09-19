@@ -7,17 +7,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonHello;
-    TextView textView;
-
+    Button buttonTranslate;
+    TextView textViewTranslation;
     LinearLayout linearLayout;
+
+    String dataToTranslate = "Hello World"; // model
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        /*
         linearLayout=new LinearLayout(this);
         buttonHello=new Button(this);
         textView = new TextView(this);
@@ -36,9 +37,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setContentView(linearLayout);
+        */
+        setContentView(R.layout.activity_main);
 
-        //setContentView(R.layout.activity_main);
+        textViewTranslation=(TextView)findViewById(R.id.textViewTranslation);
+        textViewTranslation.setText(dataToTranslate);
+
+        buttonTranslate = (Button)findViewById(R.id.buttonTranslate);
+        buttonTranslate.setOnClickListener(this);
+        
     }
 
-
+    @Override
+    public void onClick(View view) {
+        dataToTranslate="Olá Mundo!";
+        textViewTranslation.setText(dataToTranslate);
+    }
 }
